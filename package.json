@@ -1,6 +1,6 @@
 {
   "name": "@anfo/create-egg",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
   "bin": "bin/index.js",
   "scripts": {},
