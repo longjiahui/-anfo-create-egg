@@ -1,0 +1,32 @@
+{
+  "name": "[template]",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "egg-bin dev",
+    "test": "egg-bin test",
+    "start": "cross-env EGG_SERVER_ENV=prod NODE_ENV=production node server",
+    "start-egg": "egg-scripts start --port=7002 --daemon --title=[template]",
+    "stop": "egg-scripts stop --title=[template]",
+    "restart": "npm run stop && npm run start-egg"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anfo/egg-basic": "^1.0.25",
+    "cross-env": "^7.0.3",
+    "egg": "^2.29.3",
+    "egg-bin": "^4.15.0",
+    "egg-scripts": "^2.13.0",
+    "mongoose-delete": "^0.5.4",
+    "nodemailer": "^6.5.0"
+  },
+  "egg": {
+    "framework": "@anfo/egg-basic"
+  },
+  "devDependencies": {
+    "egg-mock": "^4.0.1"
+  }
+}
