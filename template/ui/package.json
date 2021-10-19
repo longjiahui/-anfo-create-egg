@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "[template]",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@anfo/promisequeue": "^1.1.8",
-    "@anfo/ui": "^0.1.9",
+    "@anfo/ui": "^0.1.4",
     "@ant-design/icons-vue": "^6.0.1",
     "ant-design-vue": "^2.2.8",
     "axios": "^0.21.1",
