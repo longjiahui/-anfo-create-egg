@@ -1,9 +1,7 @@
 // fake store not using vuex
 import { toRefs, reactive, computed } from 'vue'
 import api from '@/assets/scripts/api'
-import constValues from '@/assets/scripts/const'
 import router from '@/router'
-
 let state = toRefs(reactive({
     myInfo: {},
     isLoadingMyInfo: false,

@@ -1,7 +1,6 @@
 import _axios from 'axios'
 import { message } from 'ant-design-vue'
 import cookie from 'cookie'
-import router from '@/router'
 import utils from './utils'
 
 let axios = _axios.create({
@@ -72,119 +71,5 @@ let createAPI = ({route = '/api', raw = false} = {})=>new Proxy(()=>{}, {
     }
 })
 
-// axios.api = createAPI()
-
-// Object.assign(axios, {
-//     user: {
-//         register(params){
-//             return axios.post('/api/user/register', params).then(res=>res.data)
-//         },
-//         login(email, password){
-//             return axios.post('/api/user/login', {
-//                 email,
-//                 password
-//             }).then(res=>res.data)
-//         },
-//         logout(){
-//             return axios.post('/api/user/logout')
-//         },
-//         // userID / memberID
-//         preview(params){
-//             return axios.post('/api/user/preview', params).then(res=>res.data)
-//         },
-//         myInfo(){
-//             return axios.post('/api/user/myInfo', null, {
-//                 ignoreError: true
-//             }).then(res=>res.data)
-//         },
-//         modify(user){
-//             return axios.post('/api/user/modify', user)
-//         },
-//     },
-//     groupMember: {
-//         pageData(pageParams){
-//             return axios.post('/api/groupMember/pageData', pageParams).then(res=>res.data)
-//         },
-//         removeMember(memberID){
-//             return axios.post('/api/groupMember', {memberID})
-//         }
-//     },
-//     group: {
-//         detail(groupID){
-//             return axios.post('/api/group/detail', {groupID}).then(res=>res.data)
-//         },
-//         save(params){
-//             return axios.post('/api/group/save', params).then(res=>res.data)
-//         },
-//         pageData(pageParams = {}, params = {}){
-//             return axios.post('/api/group/pageData', {
-//                 ...pageParams,
-//                 ...params,
-//             }).then(res=>res.data)
-//         },
-//         preview(groupID){
-//             return axios.post('/api/group/preview', { groupID }).then(res=>res.data)
-//         },
-//         join(groupID, message){
-//             return axios.post('/api/group/join', {groupID, message}).then(res=>res.data)
-//         },
-//         reject(memberID){
-//             return axios.post('/api/group/reject', {memberID})
-//         },
-//         accept(memberID){
-//             return axios.post('/api/group/accept', {memberID})
-//         },
-//         getApplicants(pageParams, groupID = null){
-//             let params = {}
-//             if(groupID){
-//                 params.groupID = groupID
-//             }
-//             return axios.post('/api/group/getApplicants', {...pageParams, ...params}).then(res=>res.data)
-//         },
-//     },
-//     plan: {
-//         save(plan){
-//             return axios.post('/api/plan/save', plan).then(res=>res.data)
-//         },
-//         deleteByID(_id){
-//             return axios.post('/api/plan/deleteByID', {_id})
-//         },
-//         /**
-//          * params
-//          * userID,memberID二选一
-//          * groupID,
-//          * state
-//          */
-//         pageData(pageParams, params){
-//             return axios.post('/api/plan/pageData', {...pageParams, ...params}).then(res=>res.data)
-//         }
-//     },
-//     sts(){
-//         return axios.post('/api/sts').then(res=>res.data)
-//     }
-    // user: {
-    //     get(userId){
-    //         return axios.post('/api/user/get', {userId}, {
-    //             ignoreError: true,
-    //         }).then(data=>data.data)
-    //     },
-    //     logout(){
-    //         return axios.post('/api/user/logout')
-    //     }
-    // },
-    // posts: {
-    //     pageData(pageParams, category){
-    //         return axios.post('/api/post/pageData', {
-    //             category, 
-    //             ...pageParams
-    //         }).then(res=>res.data)
-    //     },
-    //     detail(_id){
-    //         return axios.post('/api/post/detail', {
-    //             _id
-    //         }).then(res=>res.data)
-    //     }
-    // }
-// })
-
-export default createAPI()
+let api = createAPI()
+export default api

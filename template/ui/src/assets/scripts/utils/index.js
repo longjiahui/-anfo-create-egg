@@ -1,4 +1,3 @@
-import { queueUp, throttle } from '@anfo/promisequeue'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 
@@ -6,7 +5,6 @@ import $const from '@/assets/scripts/const'
 
 import dialog from './dialog'
 import cos from './cos'
-import pagination from './pagination'
 import { computed, reactive } from 'vue'
 
 import ClipBoard from 'clipboard'
@@ -17,7 +15,6 @@ export default {
     moment,
     ...dialog,
     ...cos,
-    ...pagination,
 
     isPC() {
         var userAgentInfo = navigator.userAgent;
@@ -50,68 +47,6 @@ export default {
             return `${url}?imageMogr2/thumbnail/!${width}x${height}r`
         }
         return url
-    },
-
-    getDurationDesc(offset){
-        if(offset != null && !isNaN(offset)){
-            if(offset < 0){
-                return `${Math.abs(offset)}天前`
-            }else if(offset === 0){
-                return '今天'
-            }else if(offset === 1){
-                return '明天'
-            }else if(offset === 2){
-                return '后天'
-            }else{
-                return `${offset}天`
-            }
-        }
-    },
-    getDayOffsetByMoment(moment){
-        let momentTime = new Date(moment).getTime()
-        let now = Date.now()
-        let tomorrow = new Date(new Date(Date.now() + 86400000).toDateString()).getTime()
-        return Math.floor((momentTime + 86400000 - tomorrow) / (24 * 3600000))
-    },
-    getDurationDescByMoment(moment){
-        if(moment){
-            let offset = this.getDayOffsetByMoment(moment)
-            return this.getDurationDesc(offset)
-        }else{
-            return ''
-        }
-    },
-    getLeftDateByOffset(offset){
-        return moment().subtract(offset, 'days').startOf('day').toDate()
-        let p = Date.now() % 86400000
-        return new Date(Date.now() - p - 1000 + offset * 86400000)
-    },
-    getRightDateByOffset(offset){
-        return moment().add(offset, 'days').endOf('day').toDate()
-        let p = Date.now() % 86400000
-        return new Date(Date.now() + 86400000 - p + offset * 86400000)
-    },
-    getDateRange(ldOffset = 0, rdOffset = 0){
-        // let leftDate, rightDate
-        // let offset = Date.now() % 86400000
-        // 今天算起的昨天23:59:59
-        // leftDate = new Date(Date.now() - offset - 1000 - ldOffset * 86400000)
-        // 今天算起的24:00
-        // rightDate = new Date(Date.now() + 86400000 - offset + rdOffset * 86400000)
-        // return [leftDate, rightDate]
-        return [this.getLeftDateByOffset(ldOffset), this.getRightDateByOffset(rdOffset)]
-    },
-    // 这个deadline是 today / week ...
-    getDateRangeByDeadline(deadline){
-        if(deadline === 'today'){
-            return [null, this.getRightDateByOffset(0)]
-        }else if(deadline === 'week'){
-            return [null, this.getRightDateByOffset(7)]
-        }else if(deadline === 'lastWeek'){
-            return this.getDateRange(-7, 0)
-        }else{
-            return this.getDateRange(0, 0)
-        }
     },
 
     copyText(text) {

@@ -1,5 +1,5 @@
 {
-  "name": "[template]",
+  "name": "test",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@anfo/promisequeue": "^1.1.8",
+    "@anfo/ui": "^0.1.9",
     "@ant-design/icons-vue": "^6.0.1",
     "ant-design-vue": "^2.2.8",
     "axios": "^0.21.1",
@@ -19,7 +20,7 @@
     "seed-random": "^2.2.0",
     "shortid": "^2.2.16",
     "uuid": "^8.3.2",
-    "vue": "^3.0.0",
+    "vue": "^3.2.20",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
